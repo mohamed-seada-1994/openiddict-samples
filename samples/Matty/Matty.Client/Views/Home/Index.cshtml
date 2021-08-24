@@ -1,0 +1,45 @@
+﻿@model string
+
+<div id="screen-body" class="center large-line-space">
+    Start playing your favorite games from your Matty library
+    <br />
+    Getting started by authorizing your account
+</div>
+<div class="screan-action">
+    Press <span class="circle green">A</span> to continue
+</div>
+<div id="screen-buttons">
+    <a href="@Url.Action("Authorize", "Authorization")" class="btn rounded">Continue</a>
+</div>
+
+
+<div class="jumbotron" style="display:none">
+    @if (User?.Identity?.IsAuthenticated ?? false)
+    {
+        <h1>Welcome, @User.Identity.Name</h1>
+
+        <p>
+            @foreach (var claim in Context.User.Claims)
+            {
+                <div>@claim.Type: <b>@claim.Value</b></div>
+            }
+        </p>
+
+        if (!string.IsNullOrEmpty(Model))
+        {
+            <h3>Message received from the resource controller: @Model</h3>
+        }
+
+        <form action="~/" method="post">
+            <button class="btn btn-lg btn-warning" type="submit">Query the resource controller</button>
+        </form>
+
+        <a class="btn btn-lg btn-danger" href="/logout">Sign out</a>
+    }
+
+    else
+    {
+        <h1>Welcome, anonymous</h1>
+        <a class="btn btn-lg btn-success" href="/login">Sign in</a>
+    }
+</div>

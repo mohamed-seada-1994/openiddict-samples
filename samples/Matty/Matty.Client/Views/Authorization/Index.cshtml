@@ -1,0 +1,47 @@
+﻿@model DeviceCodeViewModel
+
+<div id="screen-body" class="left">
+    <div id="steps">
+        <ol>
+            <li>
+                On your computer or mobile device, go to:
+                <br />
+                <a class="ref" href="@Model.VerificationUri" target="_blank">@Model.VerificationUri</a>
+            </li>
+            <li>
+                Enter the following code:
+                <br />
+                <span class="code">@Model.UserCode</span>
+            </li>
+        </ol>
+    </div>
+    <div id="qr-code" class="center">
+        Or Scan QR-Code
+        <canvas id="qr"></canvas>
+    </div>
+</div>
+<div class="screan-action">
+    Press <span class="circle green">A</span> to continue or <span class="circle red">B</span> to back
+</div>
+
+<div id = "screen-buttons">
+    <a href="@Url.Action("Index", "Home")" class="btn rounded">Back</a>
+    <a href="@Url.Action("Authorize", "Authorization")" class="btn rounded">Continue</a>
+    <input type="submit" value="" class="btn rounded" />
+</div>
+
+<script src="~/scripts/qrious-4.0.2.min.js"></script>
+<script>
+    const canvas = document.querySelector('#qr');
+    const qr = new QRious({
+        element: canvas,
+        background: '#ffffff',
+        backgroundAlpha: 0,
+        foreground: 'black',
+        foregroundAlpha: 1,
+        level: 'L',
+        padding: 5,
+        size: 150,
+        value: '@Model.VerificationUriComplete'
+    });
+</script>

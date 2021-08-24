@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Matty.Client</title>
+
+    <link href="~/stylesheets/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/stylesheets/jumbotron-narrow.css" rel="stylesheet" />
+    <link href="~/stylesheets/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="container">
+        <div id="tv">
+            <div id="screen">
+                <div id="screen-header">
+                    <h1>Matty Games</h1>
+                </div>
+
+                @RenderBody()
+
+                <div id="comments">
+                    Note: The controllers is not going to work, Please press the buttons
+                    to navigate!
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
